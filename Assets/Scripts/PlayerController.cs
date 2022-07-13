@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidBody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rigidBody2D.velocity.y);
+        rigidBody2D.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, rigidBody2D.velocity.y);
+
+        if (Input.GetButtonDown("Jump")) 
+        {
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, jumpForce);
+        }
     }
 }
