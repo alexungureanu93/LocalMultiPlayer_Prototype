@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheckPoint;
     public LayerMask groundLayerMask;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,19 @@ public class PlayerController : MonoBehaviour
         //{
         //    rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, jumpForce);
         //}
+
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("yspeed", rigidBody2D.velocity.y);
+        animator.SetFloat("speed", Mathf.Abs(rigidBody2D.velocity.x));
+
+        if (rigidBody2D.velocity.x < 0) 
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if(rigidBody2D.velocity.x > 0) 
+        {
+            transform.localScale = Vector3.one;
+        }
     }
 
     public void Move(InputAction.CallbackContext context) 
