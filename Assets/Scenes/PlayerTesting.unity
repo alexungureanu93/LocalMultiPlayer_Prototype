@@ -199,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayers: 4
   activePlayers: []
+  playerSpawnEffects: {fileID: 0}
 --- !u!4 &708344199
 Transform:
   m_ObjectHideFlags: 0

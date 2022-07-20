@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public int maxPlayers;
     public List<PlayerController> activePlayers = new List<PlayerController>();
+    public ParticleSystem playerSpawnEffects;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         if (activePlayers.Count < maxPlayers) 
         { 
             activePlayers.Add(newPlayer);
+            Instantiate(playerSpawnEffects, newPlayer.transform.position, newPlayer.transform.rotation);
         }
         else 
         {
