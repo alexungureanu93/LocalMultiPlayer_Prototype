@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 1762243994}
   - component: {fileID: 1762243995}
   - component: {fileID: 1762243996}
+  - component: {fileID: 8180444239886380537}
   m_Layer: 0
   m_Name: Attack Swoosh
   m_TagString: Untagged
@@ -397,6 +398,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.69791603, y: 1.2370603}
   m_EdgeRadius: 0
+--- !u!114 &8180444239886380537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762243993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b83335f186ee94eb4fe55b4e5811f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToDeal: 1
 --- !u!1 &2341623951695580248
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +460,7 @@ GameObject:
   - component: {fileID: 1358329135}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +569,7 @@ Rigidbody2D:
   m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2341623952145241152
