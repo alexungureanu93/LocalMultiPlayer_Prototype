@@ -16,16 +16,37 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
 
     public Animator animator;
+    public bool isKeyboard2;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.instance.AddPlayer(this);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isKeyboard2) 
+        {
+            velocity = 0f;
+            if (Keyboard.current.lKey.isPressed)
+            {
+                velocity += 1f;
+            }
+            if (Keyboard.current.jKey.isPressed)
+            {
+                velocity -= 1f;
+            }
+            if (isGrounded && Keyboard.current.rightShiftKey.wasPressedThisFrame)
+            {
+                rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, jumpForce);
+            }
+            if (!isGrounded && Keyboard.current.rightShiftKey.wasReleasedThisFrame && rigidBody2D.velocity.y > 0)
+            {
+                rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y * reduceJumpForce);
+            }
+        }
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayerMask);
         rigidBody2D.velocity = new Vector2(velocity * moveSpeed, rigidBody2D.velocity.y);
 
