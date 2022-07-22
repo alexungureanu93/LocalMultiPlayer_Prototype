@@ -9,6 +9,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public SpriteRenderer[] heartDisplay;
     public Sprite heartFull,heartEmpty;
+    public Transform heartHolder;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,12 @@ public class PlayerHealthController : MonoBehaviour
     void Update()
     {
         DamagePlayer(1);
+
+    }
+
+    private void LateUpdate()
+    {
+        heartHolder.localScale = transform.localScale;
     }
     public void UpdateHealthDisplay() 
     {
