@@ -6,10 +6,14 @@ public class PlayerHealthController : MonoBehaviour
 {
     public int maxHealth = 3;
     private int currentHealth;
+    private float invincibilityCounter,flashCounter;
 
     public SpriteRenderer[] heartDisplay;
     public Sprite heartFull,heartEmpty;
     public Transform heartHolder;
+    public float invincibilityTimer,healthFlashTime =.2f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +23,21 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (invincibilityCounter > 0) 
+        {
+            invincibilityCounter -= Time.deltaTime;
+            flashCounter -= Time.deltaTime;
+            if(flashCounter < 0) 
+            {
+                flashCounter = healthFlashTime;
+                heartHolder.gameObject.SetActive(!heartHolder.gameObject.activeInHierarchy);
+            }
 
+            if (invincibilityCounter <= 0) 
+            {
+                heartHolder.gameObject.SetActive(true);
+            }
+        }
     }
 
     private void LateUpdate()
@@ -57,17 +75,21 @@ public class PlayerHealthController : MonoBehaviour
     }
     public void DamagePlayer(int damageToTake) 
     {
-        currentHealth -= damageToTake;
-
-        if (currentHealth < 0) 
+        if (invincibilityCounter <= 0)
         {
-            currentHealth = 0;
-        }
-        UpdateHealthDisplay();
+            currentHealth -= damageToTake;
 
-        if (currentHealth == 0) 
-        {
-            gameObject.SetActive(false);
+            if (currentHealth < 0)
+            {
+                currentHealth = 0;
+            }
+            UpdateHealthDisplay();
+
+            if (currentHealth == 0)
+            {
+                gameObject.SetActive(false);
+            }
+            invincibilityCounter = invincibilityTimer;
         }
     }
 }
