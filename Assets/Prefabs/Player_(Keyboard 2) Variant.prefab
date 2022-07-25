@@ -11,9 +11,13 @@ PrefabInstance:
       propertyPath: isKeyboard2
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2341623952145241153, guid: cad6c3f463ca8344fb74c695df84dc65, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2341623952145241157, guid: cad6c3f463ca8344fb74c695df84dc65, type: 3}
       propertyPath: m_Name
-      value: Player_(Keyboard 2)
+      value: Player_(Keyboard 2) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2341623952145241159, guid: cad6c3f463ca8344fb74c695df84dc65, type: 3}
       propertyPath: m_RootOrder

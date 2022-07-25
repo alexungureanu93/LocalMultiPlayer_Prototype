@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private const float reduceJumpForce = .5f;
     private float velocity;
     private bool isGrounded;
+    private float attackCounter;
 
     public float moveSpeed, jumpForce;
     public Rigidbody2D rigidBody2D;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
     public bool isKeyboard2;
+    public float timeBetweenAttacks = .25f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,11 @@ public class PlayerController : MonoBehaviour
             {
                 rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y * reduceJumpForce);
             }
+            if (Keyboard.current.enterKey.wasPressedThisFrame) 
+            {
+                animator.SetTrigger("Attack");
+                attackCounter = timeBetweenAttacks;
+            }
         }
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayerMask);
         rigidBody2D.velocity = new Vector2(velocity * moveSpeed, rigidBody2D.velocity.y);
@@ -67,6 +75,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = Vector3.one;
         }
+        if (attackCounter > 0) 
+        {
+            attackCounter = attackCounter - Time.deltaTime;
+            rigidBody2D.velocity = new Vector2(0f, rigidBody2D.velocity.y);
+        }
     }
 
     public void Move(InputAction.CallbackContext context) 
@@ -83,6 +96,14 @@ public class PlayerController : MonoBehaviour
         if(!isGrounded && context.canceled && rigidBody2D.velocity.y>0) 
         {
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y * reduceJumpForce);
+        }
+    }
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.started) 
+        {
+            animator.SetTrigger("Attack");
+            attackCounter = timeBetweenAttacks;
         }
     }
 }
