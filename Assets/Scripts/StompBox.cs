@@ -24,8 +24,10 @@ public class StompBox : MonoBehaviour
     {
         if (other.tag == "Player") 
         {
-            other.GetComponent<PlayerHealthController>().DamagePlayer(stompDamage);
-
+            if (GameManager.instance.canFight)
+            {
+                other.GetComponent<PlayerHealthController>().DamagePlayer(stompDamage);
+            }
             player.rigidBody2D.velocity = new Vector2(player.rigidBody2D.velocity.x, bounceForce);
         }
         

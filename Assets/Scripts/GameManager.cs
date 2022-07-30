@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public List<PlayerController> activePlayers = new List<PlayerController>();
     public ParticleSystem playerSpawnEffects;
 
+    public bool canFight;
+
     private void Awake()
     {
         instance = this;
