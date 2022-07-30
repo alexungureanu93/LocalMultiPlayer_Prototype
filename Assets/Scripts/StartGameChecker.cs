@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class StartGameChecker : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class StartGameChecker : MonoBehaviour
         {
             startCountText.gameObject.SetActive(false);
             startCounter = timeToStart;
+        }
+        if (Keyboard.current.yKey.isPressed) 
+        {
+            SceneManager.LoadScene(levelToLoad);
         }
     }
 

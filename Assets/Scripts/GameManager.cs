@@ -50,4 +50,13 @@ public class GameManager : MonoBehaviour
             Destroy(newPlayer.gameObject);
         }
     }
+
+    public void ActivatePlayers() 
+    {
+        foreach (PlayerController player in activePlayers)
+        {
+            player.gameObject.SetActive(true);
+            player.GetComponent<PlayerHealthController>().FillHealth();
+        }
+    }
 }
