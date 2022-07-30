@@ -10,9 +10,20 @@ public class GameManager : MonoBehaviour
     public List<PlayerController> activePlayers = new List<PlayerController>();
     public ParticleSystem playerSpawnEffects;
 
+    public bool canFight;
+
     private void Awake()
     {
-        instance = this;
+        if(instance == null) 
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else 
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     // Start is called before the first frame update
