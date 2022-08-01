@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class ArenaManager : MonoBehaviour
 {
-
+    public List<Transform> spawningPointsList=new List<Transform>();
 
     // Start is called before the first frame update
     void Start()
     {
+        foreach (PlayerController player in GameManager.instance.activePlayers)
+        {
+            int randomPoint = Random.Range(0, spawningPointsList.Count);
+            player.transform.position = spawningPointsList[randomPoint].position;
+
+            if (GameManager.instance.activePlayers.Count <= spawningPointsList.Count)
+            {
+                spawningPointsList.RemoveAt(randomPoint);
+            }
+        }
         GameManager.instance.canFight = true;
         GameManager.instance.ActivatePlayers();
     }
