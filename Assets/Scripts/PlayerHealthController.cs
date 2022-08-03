@@ -92,4 +92,13 @@ public class PlayerHealthController : MonoBehaviour
             invincibilityCounter = invincibilityTimer;
         }
     }
+    public void FillHealth() 
+    {
+        currentHealth = maxHealth;
+        UpdateHealthDisplay();
+
+        flashCounter = 0;
+        invincibilityCounter = 0;
+        heartHolder.gameObject.SetActive(true);
+    }
 }

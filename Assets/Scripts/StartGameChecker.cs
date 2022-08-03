@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class StartGameChecker : MonoBehaviour
 {
@@ -33,7 +34,8 @@ public class StartGameChecker : MonoBehaviour
             startCountText.text = Mathf.CeilToInt(startCounter).ToString();
             if(startCounter <= 0)
             {
-                SceneManager.LoadScene(levelToLoad);
+                //SceneManager.LoadScene(levelToLoad);
+                GameManager.instance.GoToNextArena();
             }
         }
         else 
@@ -41,6 +43,7 @@ public class StartGameChecker : MonoBehaviour
             startCountText.gameObject.SetActive(false);
             startCounter = timeToStart;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
