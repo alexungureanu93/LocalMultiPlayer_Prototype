@@ -6,6 +6,8 @@ public class ArenaManager : MonoBehaviour
 {
     public List<Transform> spawningPointsList=new List<Transform>();
 
+    private bool roundOver;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,11 @@ public class ArenaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.instance.CheckActivePlayers() == 1 && !roundOver) 
+        {
+            roundOver = true;
+
+            GameManager.instance.GoToNextArena();
+        }
     }
 }

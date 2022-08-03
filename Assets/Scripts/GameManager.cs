@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class GameManager : MonoBehaviour
     public ParticleSystem playerSpawnEffects;
 
     public bool canFight;
+
+    public string[] allLevels;
+
+    private List<string> levelOrder = new List<string>();
 
     private void Awake()
     {
@@ -35,7 +41,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.yKey.wasPressedThisFrame)
+        {
+            GoToNextArena();
+        }
     }
 
     public void AddPlayer(PlayerController newPlayer) 
@@ -58,5 +67,46 @@ public class GameManager : MonoBehaviour
             player.gameObject.SetActive(true);
             player.GetComponent<PlayerHealthController>().FillHealth();
         }
+    }
+
+    public int CheckActivePlayers() 
+    {
+        int playerAliveCount = 0;
+
+        for(int i=0; i< activePlayers.Count; i++) 
+        {
+            if (activePlayers[i].gameObject.activeInHierarchy) 
+            {
+                playerAliveCount++;
+            }
+        }
+
+        return playerAliveCount;
+    }
+
+    public void GoToNextArena() 
+    {
+        if (levelOrder.Count == 0) 
+        {
+            List<string> allLevelList = new List<string>();
+            allLevelList.AddRange(allLevels);
+            for(int i=0; i<allLevels.Length; i++) 
+            {
+                int selected = Random.Range(0, allLevelList.Count);
+
+                levelOrder.Add(allLevelList[selected]);
+                allLevelList.RemoveAt(selected);
+            }
+        }
+        string levelToLoad = levelOrder[0];
+        levelOrder.RemoveAt(0);
+
+        foreach(PlayerController player in activePlayers) 
+        {
+            player.gameObject.SetActive(true);
+            player.GetComponent<PlayerHealthController>().FillHealth();
+        }
+
+        SceneManager.LoadScene(levelToLoad);
     }
 }
