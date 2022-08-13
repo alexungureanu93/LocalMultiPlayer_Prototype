@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     private List<string> levelOrder = new List<string>();
 
+    [HideInInspector]//in order to be accesed from the arena managers
+    public int lastPlayerNumber;
+
     private void Awake()
     {
         if(instance == null) 
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
             if (activePlayers[i].gameObject.activeInHierarchy) 
             {
                 playerAliveCount++;
+                lastPlayerNumber = i;
             }
         }
 
