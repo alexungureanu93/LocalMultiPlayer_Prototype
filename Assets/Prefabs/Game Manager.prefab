@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayers: 4
-  activePlayers: []
+  activePlayers:
+  - {fileID: 0}
   playerSpawnEffects: {fileID: 2463468098328020102, guid: f5f115d547d78d04f8d5c9299b7e59f7, type: 3}
   canFight: 0
   allLevels:
   - Arena Test 1
   - Arena Test 1
   lastPlayerNumber: 0
-  pointsToWin: 3
-  winLevel: Character Select
+  pointsToWin: 1
+  winLevel: WinScreen

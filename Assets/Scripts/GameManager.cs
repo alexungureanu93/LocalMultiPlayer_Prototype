@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
         {
             roundWins.Add(0);
         }
+        gameWon = false;
 
         GoToNextArena();
     }

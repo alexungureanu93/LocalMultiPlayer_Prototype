@@ -8050,6 +8050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2809213498018555388, guid: c68f3f316b63a3745aed941f3acb0d6f, type: 3}
+      propertyPath: activePlayers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2809213498018555389, guid: c68f3f316b63a3745aed941f3acb0d6f, type: 3}
       propertyPath: m_RootOrder
       value: 3
