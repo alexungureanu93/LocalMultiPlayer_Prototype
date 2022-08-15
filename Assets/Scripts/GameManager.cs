@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
     public int pointsToWin;
     private List<int> roundWins = new List<int>();
 
-
+    private bool gameWon;
+    public string winLevel;
 
     private void Awake()
     {
@@ -95,28 +96,40 @@ public class GameManager : MonoBehaviour
 
     public void GoToNextArena() 
     {
-        if (levelOrder.Count == 0) 
+        if (!gameWon)
         {
-            List<string> allLevelList = new List<string>();
-            allLevelList.AddRange(allLevels);
-            for(int i=0; i<allLevels.Length; i++) 
+            if (levelOrder.Count == 0)
             {
-                int selected = Random.Range(0, allLevelList.Count);
+                List<string> allLevelList = new List<string>();
+                allLevelList.AddRange(allLevels);
+                for (int i = 0; i < allLevels.Length; i++)
+                {
+                    int selected = Random.Range(0, allLevelList.Count);
 
-                levelOrder.Add(allLevelList[selected]);
-                allLevelList.RemoveAt(selected);
+                    levelOrder.Add(allLevelList[selected]);
+                    allLevelList.RemoveAt(selected);
+                }
             }
-        }
-        string levelToLoad = levelOrder[0];
-        levelOrder.RemoveAt(0);
+            string levelToLoad = levelOrder[0];
+            levelOrder.RemoveAt(0);
 
-        foreach(PlayerController player in activePlayers) 
+            foreach (PlayerController player in activePlayers)
+            {
+                player.gameObject.SetActive(true);
+                player.GetComponent<PlayerHealthController>().FillHealth();
+            }
+
+            SceneManager.LoadScene(levelToLoad);
+        }
+        else 
         {
-            player.gameObject.SetActive(true);
-            player.GetComponent<PlayerHealthController>().FillHealth();
+            foreach (PlayerController player in activePlayers)
+            {
+                player.gameObject.SetActive(false);
+                player.GetComponent<PlayerHealthController>().FillHealth();
+            }
+            SceneManager.LoadScene(winLevel);
         }
-
-        SceneManager.LoadScene(levelToLoad);
     }
 
     public void StartFirstRound() 
@@ -135,6 +148,10 @@ public class GameManager : MonoBehaviour
         if(CheckActivePlayers() == 1) 
         {
             roundWins[lastPlayerNumber]++;
+            if(roundWins[lastPlayerNumber] >= pointsToWin) 
+            {
+                gameWon = true;
+            }
         }
     }
 }
