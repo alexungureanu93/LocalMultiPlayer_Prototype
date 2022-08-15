@@ -47,6 +47,7 @@ public class ArenaManager : MonoBehaviour
         RoundCompleteText.SetActive(true);
         playerWinText.gameObject.SetActive(true);
         playerWinText.text = "Player " + (GameManager.instance.lastPlayerNumber +1) + " wins!";
+        GameManager.instance.AddRoundWin();
 
         yield return new WaitForSeconds(2f);
 

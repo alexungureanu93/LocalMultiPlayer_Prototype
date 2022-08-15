@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]//in order to be accesed from the arena managers
     public int lastPlayerNumber;
 
+    public int pointsToWin;
+    private List<int> roundWins = new List<int>();
+
+
+
     private void Awake()
     {
         if(instance == null) 
@@ -112,5 +117,24 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(levelToLoad);
+    }
+
+    public void StartFirstRound() 
+    {
+        roundWins.Clear();
+        foreach(PlayerController player in activePlayers) 
+        {
+            roundWins.Add(0);
+        }
+
+        GoToNextArena();
+    }
+
+    public void AddRoundWin() 
+    {
+        if(CheckActivePlayers() == 1) 
+        {
+            roundWins[lastPlayerNumber]++;
+        }
     }
 }
