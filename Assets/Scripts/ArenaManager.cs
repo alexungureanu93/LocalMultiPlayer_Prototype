@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ArenaManager : MonoBehaviour
 {
     public List<Transform> spawningPointsList=new List<Transform>();
 
     private bool roundOver;
+
+    public TMP_Text playerWinText;
+    public GameObject winBar, RoundCompleteText;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +35,22 @@ public class ArenaManager : MonoBehaviour
         if (GameManager.instance.CheckActivePlayers() == 1 && !roundOver) 
         {
             roundOver = true;
+            StartCoroutine(EndRoundCO());
 
-            GameManager.instance.GoToNextArena();
+           // GameManager.instance.GoToNextArena();
         }
+    }
+
+    IEnumerator EndRoundCO()
+    {       
+        winBar.SetActive(true);
+        RoundCompleteText.SetActive(true);
+        playerWinText.gameObject.SetActive(true);
+        playerWinText.text = "Player " + (GameManager.instance.lastPlayerNumber +1) + " wins!";
+        GameManager.instance.AddRoundWin();
+
+        yield return new WaitForSeconds(2f);
+
+        GameManager.instance.GoToNextArena();
     }
 }

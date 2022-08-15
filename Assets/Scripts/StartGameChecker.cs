@@ -35,7 +35,8 @@ public class StartGameChecker : MonoBehaviour
             if(startCounter <= 0)
             {
                 //SceneManager.LoadScene(levelToLoad);
-                GameManager.instance.GoToNextArena();
+                // GameManager.instance.GoToNextArena();
+                GameManager.instance.StartFirstRound();
             }
         }
         else 
