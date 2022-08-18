@@ -101,4 +101,9 @@ public class PlayerHealthController : MonoBehaviour
         invincibilityCounter = 0;
         heartHolder.gameObject.SetActive(true);
     }
+
+    public void MakeInvincible(float invincLength) 
+    {
+        invincibilityCounter = invincLength;
+    }
 }
