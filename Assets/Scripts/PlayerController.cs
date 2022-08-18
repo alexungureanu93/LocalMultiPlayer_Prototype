@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public float powerUpCounter;
-    private float speedStore;
+    private float speedStore,gravStore;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         GameManager.instance.AddPlayer(this);
         speedStore = moveSpeed;
+        gravStore = rigidBody2D.gravityScale;
     }
 
     // Update is called once per frame
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
             if(powerUpCounter <= 0) 
             {
                 moveSpeed = speedStore;
+                rigidBody2D.gravityScale = gravStore;
             }
         }
     }

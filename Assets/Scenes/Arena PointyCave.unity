@@ -3987,6 +3987,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e492380e6afd9d947bd6866281111b70, type: 3}
+--- !u!1001 &4763199346362782778
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865974, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865978, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: m_Name
+      value: Power Up - LowGravity
+      objectReference: {fileID: 0}
+    - target: {fileID: 983813334755865979, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+      propertyPath: powerUpLength
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
 --- !u!1001 &4925019970349560592
 PrefabInstance:
   m_ObjectHideFlags: 0
