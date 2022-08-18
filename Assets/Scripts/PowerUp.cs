@@ -6,8 +6,9 @@ public class PowerUp : MonoBehaviour
 {
     public bool isHealth;
     public bool isInvincible;
+    public bool isSpeed;
 
-    public float powerUpLength;
+    public float powerUpLength,powerUpAmount;
 
     public GameObject pickUpEffect;
 
@@ -35,6 +36,12 @@ public class PowerUp : MonoBehaviour
             if (isInvincible) 
             {
                 other.GetComponent<PlayerHealthController>().MakeInvincible(powerUpLength);
+            }
+            if (isSpeed) 
+            {
+                PlayerController player=other.GetComponent<PlayerController>();
+                player.moveSpeed = powerUpAmount;
+                player.powerUpCounter = powerUpLength;
             }
             Instantiate(pickUpEffect,transform.position,transform.rotation);
             Destroy(gameObject);

@@ -20,12 +20,16 @@ public class PlayerController : MonoBehaviour
     public bool isKeyboard2;
     public float timeBetweenAttacks = .25f;
 
+    [HideInInspector]
+    public float powerUpCounter;
+    private float speedStore;
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         GameManager.instance.AddPlayer(this);
+        speedStore = moveSpeed;
     }
 
     // Update is called once per frame
@@ -59,11 +63,6 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayerMask);
         rigidBody2D.velocity = new Vector2(velocity * moveSpeed, rigidBody2D.velocity.y);
 
-        //if (Input.GetButtonDown("Jump")) 
-        //{
-        //    rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, jumpForce);
-        //}
-
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetFloat("yspeed", rigidBody2D.velocity.y);
         animator.SetFloat("speed", Mathf.Abs(rigidBody2D.velocity.x));
@@ -80,6 +79,14 @@ public class PlayerController : MonoBehaviour
         {
             attackCounter = attackCounter - Time.deltaTime;
             rigidBody2D.velocity = new Vector2(0f, rigidBody2D.velocity.y);
+        }
+        if(powerUpCounter > 0) 
+        {
+            powerUpCounter-= Time.deltaTime;
+            if(powerUpCounter <= 0) 
+            {
+                moveSpeed = speedStore;
+            }
         }
     }
 
