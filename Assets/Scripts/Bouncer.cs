@@ -39,6 +39,7 @@ public class Bouncer : MonoBehaviour
             spriteRenderer.sprite = upPad;
             Rigidbody2D playerRGBD = other.GetComponent<Rigidbody2D>();
             playerRGBD.velocity = new Vector2(playerRGBD.velocity.x, bouncePower);
+            AudioManager.instance.PlaySFX(6);
         }
     }
 }

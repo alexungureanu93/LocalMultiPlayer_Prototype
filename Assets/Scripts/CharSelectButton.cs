@@ -46,6 +46,7 @@ public class CharSelectButton : MonoBehaviour
                 spriteRenderer.sprite = buttonDown;
                 popCount = waitToPopUp;
             }
+            AudioManager.instance.PlaySFX(2);
         }
     }
     private void OnTriggerExit2D(Collider2D other)

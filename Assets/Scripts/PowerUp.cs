@@ -32,23 +32,27 @@ public class PowerUp : MonoBehaviour
             if (isHealth)
             {
                 other.GetComponent<PlayerHealthController>().FillHealth();
-                
+                AudioManager.instance.PlaySFX(8);
+
             }
             if (isInvincible) 
             {
                 other.GetComponent<PlayerHealthController>().MakeInvincible(powerUpLength);
+                AudioManager.instance.PlaySFX(9);
             }
             if (isSpeed) 
             {
                 PlayerController player=other.GetComponent<PlayerController>();
                 player.moveSpeed = powerUpAmount;
                 player.powerUpCounter = powerUpLength;
+                AudioManager.instance.PlaySFX(10);
             }
             if (isGravity) 
             {
                 PlayerController player = other.GetComponent<PlayerController>();
                 player.powerUpCounter = powerUpLength;
                 player.rigidBody2D.gravityScale = powerUpAmount;
+                AudioManager.instance.PlaySFX(11);
             }
             Instantiate(pickUpEffect,transform.position,transform.rotation);
             Destroy(gameObject);

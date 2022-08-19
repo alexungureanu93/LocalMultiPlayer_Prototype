@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("Attack");
                 attackCounter = timeBetweenAttacks;
+                AudioManager.instance.PlaySFX(0);
             }
         }
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayerMask);
@@ -114,6 +115,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             attackCounter = timeBetweenAttacks;
+
+            AudioManager.instance.PlaySFX(0);
         }
     }
 }

@@ -26,6 +26,7 @@ public class Portal : MonoBehaviour
             other.transform.position = exitPoint.position;
             Instantiate(portalEffect, transform.position, transform.rotation);
             Instantiate(portalEffect,exitPoint.position,exitPoint.rotation);
+            AudioManager.instance.PlaySFX(7);
         }
     }
 }
