@@ -29,6 +29,7 @@ public class StompBox : MonoBehaviour
                 other.GetComponent<PlayerHealthController>().DamagePlayer(stompDamage);
             }
             player.rigidBody2D.velocity = new Vector2(player.rigidBody2D.velocity.x, bounceForce);
+            AudioManager.instance.PlaySFX(1);
         }
         
     }

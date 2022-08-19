@@ -28,6 +28,10 @@ public class StartGameChecker : MonoBehaviour
     {
         if(playerInZone >1 && playerInZone == GameManager.instance.activePlayers.Count) 
         {
+            if (!startCountText.gameObject.activeInHierarchy) 
+            {
+                AudioManager.instance.PlaySFX(3);
+            }
             startCountText.gameObject.SetActive(true);
             startCounter -= Time.deltaTime;
 

@@ -77,6 +77,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (invincibilityCounter <= 0)
         {
+            AudioManager.instance.PlaySFX(5);
             currentHealth -= damageToTake;
 
             if (currentHealth < 0)
@@ -88,6 +89,7 @@ public class PlayerHealthController : MonoBehaviour
             if (currentHealth == 0)
             {
                 gameObject.SetActive(false);
+                AudioManager.instance.PlaySFX(4);
             }
             invincibilityCounter = invincibilityTimer;
         }
