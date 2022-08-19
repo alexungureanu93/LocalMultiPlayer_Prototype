@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4925019969726497061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.54, y: 2.8, z: 0}
+  m_LocalPosition: {x: 9.5, y: 5.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4925019969964468922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56, y: -5.69, z: 0}
+  m_LocalPosition: {x: -2.31, y: -1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -189,6 +189,12 @@ MonoBehaviour:
   playerWinText: {fileID: 0}
   winBar: {fileID: 0}
   RoundCompleteText: {fileID: 0}
+  powerUps:
+  - {fileID: 9152442456281699974, guid: 2954a54a048e0ff42942021075246e53, type: 3}
+  - {fileID: 472294614257577815, guid: e75783cf5bfb09341948ff1d3bd3925a, type: 3}
+  - {fileID: 983813334755865978, guid: 5533d9df2bcaf1348aee4e4389c9700a, type: 3}
+  - {fileID: 5566811102133263198, guid: 88ecb719874301f4c8abd55074beee16, type: 3}
+  timeBetweenPowerUp: 15
 --- !u!1 &4925019970658131618
 GameObject:
   m_ObjectHideFlags: 0
